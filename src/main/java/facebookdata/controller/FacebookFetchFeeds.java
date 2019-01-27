@@ -1,10 +1,13 @@
 package facebookdata.controller;
 
+import Food.SomeBean;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -32,8 +35,20 @@ public class FacebookFetchFeeds {
         User userProfile = facebook.fetchObject("me", User.class, fields);
         model.addAttribute("profileImage", userProfile.getFirstName().concat(userProfile.getLastName()));
         model.addAttribute("pic", connectionRepository.getPrimaryConnection(Facebook.class).createData().getImageUrl());
-
         return "hello";
+    }
+
+    @GetMapping("/food/foo")
+    public String showPage(Model model) {
+        model.addAttribute("someBean", new SomeBean("someBean")); //assume SomeBean has a property called datePlanted
+        return "food/foo";
+    }
+
+    @PostMapping("/food/foo")
+    public String showPage(@ModelAttribute("someBean") SomeBean bean) {
+
+        System.out.println("Date planted: " + bean.getDatePlanted()); //in reality, you'd use a logger instead :)
+        return "food/foo";
     }
 
 }

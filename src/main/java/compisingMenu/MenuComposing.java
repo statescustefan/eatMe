@@ -1,25 +1,25 @@
 package compisingMenu;
 
-import Food.Menu;
+import Food.SomeBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping
 public class MenuComposing {
 
-    @GetMapping("/foo")
-    public String showPage(Model model) {
-        model.addAttribute("someBean", new Menu()); //assume SomeBean has a property called datePlanted
-        return "foo";
-    }
+//    @GetMapping("/food/foo")
+//    public String showPage(Model model) {
+//        model.addAttribute("someBean", new SomeBean("someBean")); //assume SomeBean has a property called datePlanted
+//        return "food/foo";
+//    }
+//
+//    @PostMapping("/food/foo")
+//    public String showPage(@ModelAttribute("someBean") SomeBean bean) {
+//
+//        System.out.println("Date planted: " + bean.getDatePlanted()); //in reality, you'd use a logger instead :)
+//        return "food/foo";
+//    }
 
-    @PostMapping("/foo")
-    public String showPage(@ModelAttribute("someBean") Menu menu) {
-
-        System.out.println("Menu choosed: " + menu.getFinalMenu()); //in reality, you'd use a logger instead :)
-        return "redirect:/";
-    }
 }
