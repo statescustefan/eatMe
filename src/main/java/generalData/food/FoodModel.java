@@ -1,4 +1,4 @@
-package Food;
+package generalData.food;
 
 //import lombok.Data;
 
