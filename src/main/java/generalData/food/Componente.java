@@ -1,4 +1,4 @@
-package Food;
+package generalData.food;
 
 public enum Componente {
         MENIU_FARA_BAUTURA,

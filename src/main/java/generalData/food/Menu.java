@@ -1,4 +1,4 @@
-package Food;
+package generalData.food;
 
 public class Menu {
     String apa="";
